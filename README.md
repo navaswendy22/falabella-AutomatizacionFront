@@ -85,7 +85,7 @@ Para clonar el repositorio y comenzar a trabajar desde su ambiente local deberá
   * Desktop: `src/test/java/features/` aquí deben ir todos nuestros .feature y cada archivo .feature, debe tener definido el tag *@test* al inicio de este.
 
 *2. STEPS DEFINITION:* Luego debes revisar si nuestros steps definidos en el archivo .feature se encuentran implementados.
-Si no está la implementación de nuestro step, ve a la siguiente ruta, según corresponda y debes crear la definición de tu step. (esto puede sonar raro, pero es donde realizamos la conección entre el gherkins y el método que va a ejecutar)
+Si no está la implementación de nuestro step, ve a la siguiente ruta, según corresponda y debes crear la definición de tu step. (esto puede sonar raro, pero es donde realizamos la conexión entre el gherkins y el método que va a ejecutar)
 
   * Desktop: `~src/test/java/steps/` 
 
