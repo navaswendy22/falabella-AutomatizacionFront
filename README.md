@@ -93,13 +93,12 @@ Si no está la implementación de nuestro step, ve a la siguiente ruta, según c
 Ejemplo:
 
 
-  @Then("user clicks on change password button")
-  public void clickChangePasswordButton() {
-    askPasswordActions.clickChangePasswordButton();
-  }
+   @Given("user enters the site")
+    public void enterTheSite()  {
+        home.closePopUp();
+    }
 
-
-*IMPORTANTE:* si vas a crear un nuevo archivo para Step Definition, el nombre debe tener la siguiente forma nombreDigno*Steps*.java
+*IMPORTANTE:* si vas a crear un nuevo archivo para Step Definition, el nombre debe tener la siguiente forma NombreDigno*Steps*.java
 [Más información sobre Step Definition aquí](https://docs.cucumber.io/cucumber/step-definitions/)
 
 *3. PAGES Y ACTIONS:* Finalmente, para tener organizada la interacción entre los elementos de nuestra página a probar y 
@@ -107,8 +106,8 @@ las acciones que vamos a realizar, decidimos dividir las acciones y los elemento
 todos los elementos que se va a utilizar y existe otra clase que se encarga de interactuar con ese elemento 
 ( realizar un click, validar un texto, ingresar texto, etc.)
 
-La organización es simple, si tienes una página por ejemplo home, creas una carpeta dentro de la ruta correspondiente y dentro de esta 
-creas 2 clases (home*Page.java y homeActions.java) **si existe, la carpeta o las clases solo debes agregar tu código *
+La organización es simple, si tienes una página por ejemplo home, creas una carpeta dentro de la ruta correspondiente (action) y dentro de esta 
+creas la clase  ( homeActions.java) y otra carpeta (pages) donde se crea la clase home*Page.java y **si existe, la carpeta o las clases solo debes agregar tu código *
 
   * Desktop: `~src/test/java/pom/`
 
