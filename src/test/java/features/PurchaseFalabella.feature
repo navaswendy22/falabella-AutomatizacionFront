@@ -4,7 +4,7 @@ Feature: Purchase in Falabella
   Scenario Outline: user Makes a purchase in Falabella
     Given user enters the site
     When user presses the category menu option
-    Then user goes to the option "<product>"
+    And user goes to the option "<product>"
     And select "<sub product>"
     Then select the first product displayed
     And select size "<talla>"

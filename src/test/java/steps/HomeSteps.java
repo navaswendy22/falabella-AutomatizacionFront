@@ -10,20 +10,17 @@ public class HomeSteps extends BaseTest{
 
     @Given("user enters the site")
     public void enterTheSite()  {
-  //      screenShot.takeScreenShot();
         home.closePopUp();
     }
 
     @Then("user enters to sign up")
     public void userEntersToSignUp()  {
-  //      screenShot.takeScreenShot();
         home.moveMouseToIniciarSesion();
         home.clickSignUp();
     }
 
     @Then("user enters to sign in")
     public void userEnterToSignIn() {
-  //      screenShot.takeScreenShot();
         home.moveMouseToIniciarSesion();
         home.clickSignIn();
     }

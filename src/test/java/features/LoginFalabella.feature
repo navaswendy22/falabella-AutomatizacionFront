@@ -4,12 +4,12 @@ Feature: Register a user in Falabella and login
   @test @register
   Scenario Outline: Register a user in Falabella
     Given user enters the site
-    Then user enters to sign up
+    When  user enters to sign up
     And start filling in form entering name "<name>"
     And enter last name "<lastName>"
-    Then enter rut "<rut>"
+    And enter rut "<rut>"
     And enter phone number "<phone>"
-    Then enter email "<email>"
+    And enter email "<email>"
     And enter password "<password>"
     And press register button
     Then validate that the "<name>" matches the entered account
@@ -23,10 +23,10 @@ Feature: Register a user in Falabella and login
   @test @login
   Scenario Outline: Log in with a user
     Given user enters the site
-    Then user enters to sign in
+    When user enters to sign in
     And enter mail "<email>"
     And enter password "<password>"
-    Then press enters button
+    And press enters button
     Then validate that the "<name>" matches the entered account
 
     Examples:
