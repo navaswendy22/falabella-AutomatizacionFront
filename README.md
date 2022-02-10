@@ -85,7 +85,7 @@ Para clonar el repositorio y comenzar a trabajar desde su ambiente local deberá
   * Desktop: `src/test/java/features/` aquí deben ir todos nuestros .feature y cada archivo .feature, debe tener definido el tag *@test* al inicio de este.
 
 *2. STEPS DEFINITION:* Luego debes revisar si nuestros steps definidos en el archivo .feature se encuentran implementados.
-Si no está la implementación de nuestro step, ve a la siguiente ruta, según corresponda y debes crear la definición de tu step. (esto puede sonar raro, pero es donde realizamos la conección entre el gherkins y el método que va a ejecutar)
+Si no está la implementación de nuestro step, ve a la siguiente ruta, según corresponda y debes crear la definición de tu step. (esto puede sonar raro, pero es donde realizamos la conexión entre el gherkins y el método que va a ejecutar)
 
   * Desktop: `~src/test/java/steps/` 
 
@@ -93,13 +93,12 @@ Si no está la implementación de nuestro step, ve a la siguiente ruta, según c
 Ejemplo:
 
 
-  @Then("user clicks on change password button")
-  public void clickChangePasswordButton() {
-    askPasswordActions.clickChangePasswordButton();
-  }
+   @Given("user enters the site")
+    public void enterTheSite()  {
+        home.closePopUp();
+    }
 
-
-*IMPORTANTE:* si vas a crear un nuevo archivo para Step Definition, el nombre debe tener la siguiente forma nombreDigno*Steps*.java
+*IMPORTANTE:* si vas a crear un nuevo archivo para Step Definition, el nombre debe tener la siguiente forma NombreDigno*Steps*.java
 [Más información sobre Step Definition aquí](https://docs.cucumber.io/cucumber/step-definitions/)
 
 *3. PAGES Y ACTIONS:* Finalmente, para tener organizada la interacción entre los elementos de nuestra página a probar y 
@@ -107,13 +106,13 @@ las acciones que vamos a realizar, decidimos dividir las acciones y los elemento
 todos los elementos que se va a utilizar y existe otra clase que se encarga de interactuar con ese elemento 
 ( realizar un click, validar un texto, ingresar texto, etc.)
 
-La organización es simple, si tienes una página por ejemplo home, creas una carpeta dentro de la ruta correspondiente y dentro de esta 
-creas 2 clases (home*Page.java y homeActions.java) **si existe, la carpeta o las clases solo debes agregar tu código *
+La organización es simple, si tienes una página por ejemplo home, creas una carpeta dentro de la ruta correspondiente (action) y dentro de esta 
+creas la clase  HomeActions.java y otra carpeta (pages) donde se crea la clase HomePage.java y **si existe, la carpeta o las clases solo debes agregar tu código 
 
   * Desktop: `~src/test/java/pom/`
 
 
-*IMPORTANTE:* si vas a crear un nuevo archivo para una page o action, el nombre debe tener la siguiente forma nombrePagina*Page.java y nombrePaginaActions*.java
+*IMPORTANTE:* si vas a crear un nuevo archivo para una page o action, el nombre debe tener la siguiente forma NombrePaginaPage.java y NombrePaginaActions*.java
 
 
 
