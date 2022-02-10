@@ -122,7 +122,7 @@ Ejemplo:
 ```
 Dirigirse a la carpeta: src => test => java => runner => Runner.Java
 
-Una vez allí, seleccionar el tags que desea correr (abajo se explicaran los tags). 
+Una vez allí, seleccionar el tags que desea correr. 
 Sin embargo por defecto trae el tags test, si presiona segundo click, luego run, se ejecutarán todos los test creados.
 
 Si desea ejecutar un solo test, solo se debe cambiar el tags por el de preferencia.
