@@ -107,12 +107,12 @@ todos los elementos que se va a utilizar y existe otra clase que se encarga de i
 ( realizar un click, validar un texto, ingresar texto, etc.)
 
 La organización es simple, si tienes una página por ejemplo home, creas una carpeta dentro de la ruta correspondiente (action) y dentro de esta 
-creas la clase  ( homeActions.java) y otra carpeta (pages) donde se crea la clase home*Page.java y **si existe, la carpeta o las clases solo debes agregar tu código *
+creas la clase  HomeActions.java y otra carpeta (pages) donde se crea la clase HomePage.java y **si existe, la carpeta o las clases solo debes agregar tu código 
 
   * Desktop: `~src/test/java/pom/`
 
 
-*IMPORTANTE:* si vas a crear un nuevo archivo para una page o action, el nombre debe tener la siguiente forma nombrePagina*Page.java y nombrePaginaActions*.java
+*IMPORTANTE:* si vas a crear un nuevo archivo para una page o action, el nombre debe tener la siguiente forma NombrePaginaPage.java y NombrePaginaActions*.java
 
 
 
