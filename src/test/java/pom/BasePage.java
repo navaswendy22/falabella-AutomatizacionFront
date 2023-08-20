@@ -3,127 +3,89 @@ package pom;
 import org.awaitility.core.ConditionTimeoutException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
-
-import static org.awaitility.Awaitility.await;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.awaitility.Awaitility.await;
+
 
 public class BasePage {
 
+    private static final int WAIT_TIMEOUT = 30;
     protected WebDriver driver;
-    private static final int WAIT_TIMEOUT = 10;
     protected Actions action;
 
-    @FindBy(xpath ="//*[@class='Spinner-module_spinner__svg__3A0EL']")
-    private WebElement loading;
 
-    public BasePage(WebDriver driver){
-
+    protected BasePage(WebDriver driver) {
         this.driver = driver;
+        new WebDriverWait(driver, 30);
         action = new Actions(driver);
+
     }
 
-    public void waitUntilElementIsVisible(WebElement element){
-        try{
-            await().atMost(WAIT_TIMEOUT, SECONDS).until(()->isVisible(element));
-        }catch (ConditionTimeoutException e){
-            throw new ConditionTimeoutException(String.format("No se encuentra el elemento despues de 5 segundos\nElemento: %s", element));
-        }
-    }
-
-    public void waitUntilElementIsVisible(By element){
-        try{
-            await().atMost(WAIT_TIMEOUT, SECONDS).until(()->isVisible(element));
-        }catch (ConditionTimeoutException e){
-            throw new ConditionTimeoutException(String.format("No se encuentra el elemento despues de 5 segundos\nElemento: %s", element));
-        }
-    }
-
-
-    public void click(WebElement element)  {
-        waitUntilElementIsVisible(element);
+    protected void click(WebElement element) throws Exception {
+        isClickeable(element);
         element.click();
     }
 
-    public void click(By selector)  {
-        waitUntilElementIsVisible(selector);
+    public void click(By selector) throws Exception {
+        isClickeable(selector);
         WebElement element = driver.findElement(selector);
         element.click();
     }
 
-    protected void sendKeys(String text, WebElement element) {
-        waitUntilElementIsVisible(element);
-        element.clear();
-        element.sendKeys(text);
+    protected void isClickeable(By element) throws Exception {
+        try {
+            new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(element));
+        } catch (Exception e) {
+            throw new Exception("El elemento no es clickeable " + element);
+        }
     }
 
-    protected void sendKeysActions(String text, WebElement element) {
-        waitUntilElementIsVisible(element);
-        action.sendKeys(element,text)
-                .build()
-                .perform();
+    protected void isClickeable(WebElement element) throws Exception {
+        try {
+            new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(element));
+        } catch (Exception e) {
+            throw new Exception("El elemento no es clickeable " + element);
+        }
     }
 
-    protected boolean isVisible(WebElement webElement){
+    protected boolean isVisible(WebElement webElement) {
         try {
             return webElement.isDisplayed();
-        } catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
-    protected boolean isVisible(By webElement){
+    public void waitUntilElementIsVisible(WebElement element) {
         try {
-            return driver.findElement(webElement).isDisplayed();
-        } catch (Exception e){
-            return false;
+            await().atMost(WAIT_TIMEOUT, SECONDS).until(() -> isVisible(element));
+        } catch (ConditionTimeoutException e) {
+            throw new ConditionTimeoutException(String.format("No se encuentra el elemento despues de 30 segundos\nElemento: %s", element));
         }
     }
 
-    public void waitFor(int segundos) {
+    public void waitFor(int sec) {
         try {
-            Thread.sleep(segundos * 1000L);
+            Thread.sleep(sec * 1000L);
         } catch (InterruptedException ignored) {
 
         }
     }
 
-    public void moveToElement(WebElement element) {
+    protected void sendKeys(String inputText, WebElement element) {
         waitUntilElementIsVisible(element);
-        waitFor(4);
-        action.moveToElement(element).perform();
+        element.clear();
+        element.sendKeys(inputText);
     }
 
-    public void scrollDown() {
-        Dimension size = driver.manage().window().getSize();
-        int startPoint = (int)((double)size.getHeight() * 0.7D);
-        int endPoint = (int)((double)size.getHeight() * 0.4D);
-        ((JavascriptExecutor)driver).executeScript("scroll("+startPoint+","+endPoint+")");
-    }
-
-    protected boolean isInvisible(WebElement element){
+    protected boolean getText(WebElement element, String text) {
         try {
-            return !element.isDisplayed();
-        } catch (NoSuchElementException | StaleElementReferenceException e){
-            return true;
-        }catch (Exception e){
+            waitUntilElementIsVisible(element);
+            return element.getText().contains(text);
+        } catch (Exception e) {
             return false;
         }
-    }
-
-    public void waitUntilElementIsInVisibleNonThrow(WebElement element){
-        try{
-            await().atMost(WAIT_TIMEOUT, SECONDS).until(()->isInvisible(element));
-        } catch (ConditionTimeoutException ignored) {
-        }
-    }
-
-    public void waitUntilPageIsLoaded(){
-        waitUntilElementIsInVisibleNonThrow(loading);
-    }
-
-    protected boolean getText(WebElement webElement, String text) {
-        waitUntilPageIsLoaded();
-        return webElement.getText().contains(text);
     }
 }

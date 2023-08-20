@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>falabella-pruebaaufuncional</artifactId>
+    <artifactId>pruebaaufuncional</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>
@@ -84,6 +84,12 @@
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>4.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.2</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

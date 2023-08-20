@@ -1,16 +1,12 @@
 package steps;
 
 import org.openqa.selenium.WebDriver;
-import pom.actions.HomeAction;
-import pom.actions.PurchaseSummaryAction;
-import pom.actions.RegisterAction;
-import pom.actions.SelectProductAction;
+import pom.actions.AddProductAction;
+import pom.actions.CheckoutsAction;
 
 public class BaseTest {
     protected WebDriver driver = Hooks.getDriver();
-    protected HomeAction home = new HomeAction(driver);
-    protected RegisterAction register = new RegisterAction(driver);
-    protected SelectProductAction select = new SelectProductAction(driver);
-    protected PurchaseSummaryAction summary = new PurchaseSummaryAction(driver);
+    protected AddProductAction home = new AddProductAction(driver);
+    protected CheckoutsAction checkout = new CheckoutsAction(driver);
 
 }

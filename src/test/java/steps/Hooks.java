@@ -13,7 +13,6 @@ public class Hooks {
 
     private static WebDriver driver;
 
-
     @Before
     public static void start() {
 
@@ -33,11 +32,11 @@ public class Hooks {
     }
 
     @After
-    public void quitDriver(){
+    public void quitDriver() {
         driver.quit();
     }
 
-    public static WebDriver getDriver(){
+    public static WebDriver getDriver() {
         return driver;
     }
 }
